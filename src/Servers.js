@@ -70,15 +70,15 @@ const Servers = () => {
         </div>
         <div className="flex">
           <div className="p-2">
-            <BsFillMicFill className="fill-gray-500" />
+            <BsFillMicFill className="text-gray-500 h-[20px] w-[20px] cursor-pointer hover:text-white" />
           </div>
           <div className="p-2">
-            <MdHeadset className="fill-gray-500" />
+            <MdHeadset className="text-gray-500 h-[20px] w-[20px] cursor-pointer hover:text-white" />
           </div>
-          <div className="p-2 cursor-pointer">
+          <div className="p-2">
             <MdSettings
               onClick={() => auth.signOut()}
-              className="fill-gray-500"
+              className="text-gray-500 h-[20px] w-[20px] cursor-pointer hover:text-white"
             />
           </div>
         </div>

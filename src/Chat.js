@@ -65,7 +65,7 @@ function Chat() {
     <div className="flex flex-col bg-[#303339] flex-1 h-[100vh]">
       <ChatHead />
 
-      <div className="flex-1 overflow-scroll h-[100vh]">
+      <div className="flex-1 overflow-y-auto h-[100vh]">
         {message.map(({ message, id }) => (
           <Messages
             timestamp={message.timestamp}

@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import SideBar from "./SideBar";
+import Servers from "./Servers";
+import Chat from "./Chat";
+import { auth } from "./config/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
+import Login from "./components/auth";
 
-function App() {
+export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setIsLoggedIn(!!user);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex">
+      {isLoggedIn ? (
+        <>
+          <SideBar />
+          <Servers />
+          <Chat />
+        </>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }
-
-export default App;
